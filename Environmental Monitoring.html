@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+	body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #007ACC;
+    color: #FFF;
+    text-align: center;
+    padding: 20px;
+}
+
+main {
+    padding: 20px;
+}
+
+#environmental-data {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+</style>
+    <title>Environmental Monitoring Dashboard</title>
+</head>
+<body>
+    <header>
+        <h1>Real-time Environmental Monitoring Dashboard</h1>
+    </header>
+    <main>
+        <div id="environmental-data">
+            <!-- Temperature and humidity data will be displayed here -->
+        </div>
+    </main>
+    <script>
+	// Simulated real-time data
+function generateRandomData() {
+    return {
+        temperature: (Math.random() * 30 + 10).toFixed(2), // Simulated temperature in Celsius
+        humidity: (Math.random() * 40 + 40).toFixed(2) // Simulated humidity in percentage
+    };
+}
+
+function updateData() {
+    const environmentalDataElement = document.getElementById('environmental-data');
+    setInterval(() => {
+        const data = generateRandomData();
+        const timestamp = new Date().toLocaleTimeString();
+
+        // Update the data display
+        const newData = `<p>${timestamp}: Temperature: ${data.temperature}°C, Humidity: ${data.humidity}%</p>`;
+        environmentalDataElement.innerHTML = newData + environmentalDataElement.innerHTML;
+    }, 3000); // Update data every 3 seconds
+}
+
+window.addEventListener('load', () => {
+    updateData();
+});
+</script>
+</body>
+</html>
